@@ -296,13 +296,23 @@ function saveBaseTime() {
 
 function getNow() { return baseTime ? new Date(baseTime) : new Date(); }
 
+// function fmt(dt) {
+//   const p = n => String(n).padStart(2,'0');
+//   return `${dt.getFullYear()}.${p(dt.getMonth()+1)}.${p(dt.getDate())} ${p(dt.getHours())}:${p(dt.getMinutes())}`;
+// }
+// function fmtDate(dt) {
+//   const p = n => String(n).padStart(2,'0');
+//   return `${dt.getFullYear()}.${p(dt.getMonth()+1)}.${p(dt.getDate())}`;
+// }
+
+const DAYS = ['일','월','화','수','목','금','토'];
 function fmt(dt) {
   const p = n => String(n).padStart(2,'0');
-  return `${dt.getFullYear()}.${p(dt.getMonth()+1)}.${p(dt.getDate())} ${p(dt.getHours())}:${p(dt.getMinutes())}`;
+  return `${dt.getFullYear()}.${p(dt.getMonth()+1)}.${p(dt.getDate())}(${DAYS[dt.getDay()]}) ${p(dt.getHours())}:${p(dt.getMinutes())}`;
 }
 function fmtDate(dt) {
   const p = n => String(n).padStart(2,'0');
-  return `${dt.getFullYear()}.${p(dt.getMonth()+1)}.${p(dt.getDate())}`;
+  return `${dt.getFullYear()}.${p(dt.getMonth()+1)}.${p(dt.getDate())}(${DAYS[dt.getDay()]})`;
 }
 
 function calcExpiry(item) {
